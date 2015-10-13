@@ -26,10 +26,17 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if @post.update(post_params)
-      redirect_to posts_path
+
+    if params[:vote] == 'up'
+      @post.votes += 1
+      @post.save
+      redirect_to post_path(@post)
     else
-      render :edit
+      if @post.update(post_params)
+        redirect_to posts_path
+      else
+        render :edit
+      end
     end
   end
 
