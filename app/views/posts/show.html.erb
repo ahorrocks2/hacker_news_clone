@@ -1,7 +1,15 @@
 <h3> <%= @post.description %> </h3>
 <h5> Votes: <%= @post.votes %> </h5>
+<h4> Comments: </h4>
+
+<ul>
+  <% @post.comments.each do |comment| %>
+    <li><%= comment.name %> -- <%= comment.report %></li>
+  <% end %>
+</ul>
 
 <%= link_to 'Home', posts_path %>
 <%= link_to 'Edit', edit_post_path(@post) %>
 <%= link_to 'Delete', post_path(@post),:method => "delete" %>
 <%= link_to 'Vote', post_path(@post, :vote => "up"), :method => "patch" %>
+<%= link_to 'Add a Comment', new_post_comment_path(@post) %>
