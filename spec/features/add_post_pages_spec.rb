@@ -9,4 +9,10 @@ describe "the add post process" do
     click_on 'Create Post'
     expect(page).to have_content 'this is google'
   end
+
+  it "gives error when fields are not entered" do
+    visit new_post_path
+    click_on 'Create Post'
+    expect(page).to have_content 'errors'
+  end
 end
