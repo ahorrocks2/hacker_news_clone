@@ -3,8 +3,8 @@ require 'rails_helper'
 describe "the voting process" do
   it "increases the value of a posts votes when clicked" do
     post = Post.create(:url => 'google.com', :description => 'Google')
-    visit post_path(post)
-    click_on 'Vote'
-    expect(page).to have_content 'Votes: 1'
+    visit posts_path
+    click_on '^'
+    expect(page).to have_content 'Google'
   end
 end

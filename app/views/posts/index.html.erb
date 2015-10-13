@@ -2,7 +2,7 @@
 
 <ul style="list-style: none">
   <% @posts.each do |post| %>
-    <li><%= link_to post.description, post_path(post) %></li>
+    <li><%= link_to '^', post_path(post, :vote => "up"), :method => "patch" %> <%= link_to post.description, post_path(post) %></li>
   <% end %>
 </ul>
 

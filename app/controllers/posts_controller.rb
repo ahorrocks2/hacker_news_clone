@@ -30,7 +30,7 @@ class PostsController < ApplicationController
     if params[:vote] == 'up'
       @post.votes += 1
       @post.save
-      redirect_to post_path(@post)
+      redirect_to posts_path
     else
       if @post.update(post_params)
         redirect_to posts_path
