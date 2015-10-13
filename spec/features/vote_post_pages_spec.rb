@@ -7,6 +7,4 @@ describe "the voting process" do
     click_on 'Vote'
     expect(page).to have_content 'Votes: 1'
   end
-
-
 end
