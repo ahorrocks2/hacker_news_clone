@@ -1,9 +1,24 @@
 <%= render "layouts/errors", :object => @comment %>
 
 <%= form_for [@post, @comment] do |f| %>
-<%= f.label :name %>
-<%= f.text_field :name %>
-<%= f.label :report %>
-<%= f.text_field :report %>
+<%= f.label :name %><br>
+<%= f.text_field :name %><br>
+<%= f.label :report %><br>
+<%= f.text_area :report %><br>
 <%= f.submit %>
+<% end %>
+
+<%= link_to 'Back', post_path(@post) %>
+
+<hr>
+
+<% if @post.comments.any? %>
+  <h4> Comments: </h4>
+  <ul style="list-style: none">
+    <% @post.comments.order(created_at: :desc).each do |comment| %>
+    <li><%= link_to '[X]', post_comment_path(@post, comment), :method => "delete" %>  <%= comment.name %> -- <%= comment.created_at.to_formatted_s(:short) %> -- <%= comment.report %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <h4> No comments yet! Be the first! </h4>
 <% end %>

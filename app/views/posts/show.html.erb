@@ -1,12 +1,17 @@
 <h3> <%= @post.description %> </h3>
 <h5> Votes: <%= @post.votes %> </h5>
-<h4> Comments: </h4>
 
-<ul style="list-style: none">
-  <% @post.comments.order(created_at: :desc).each do |comment| %>
-    <li><%= link_to '[X]', post_comment_path(@post, comment), :method => "delete" %>  <%= comment.name %> -- <%= comment.report %></li>
-  <% end %>
-</ul>
+<% if @post.comments.any? %>
+  <h4> Comments: </h4>
+  <ul style="list-style: none">
+    <% @post.comments.order(created_at: :desc).each do |comment| %>
+      <li><%= link_to '[X]', post_comment_path(@post, comment), :method => "delete" %>  <%= comment.name %> -- <%= comment.created_at.to_formatted_s(:short) %> -- <%= comment.report %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <h4> No comments yet! Be the first! </h4>
+<% end %>
+
 
 <p><%= link_to 'Home', posts_path %>  |
 <%= link_to 'Edit', edit_post_path(@post) %>  |
