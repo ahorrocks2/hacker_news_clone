@@ -1,0 +1,17 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+
+development:
+  <<: *default
+  database: hacker_clone_development
+
+test:
+  <<: *default
+  database: hacker_clone_test
+
+production:
+  <<: *default
+  database: hacker_clone_production
+  username: hacker_clone
+  password: <%= ENV['EXAMPLE_DATABASE_PASSWORD'] %>
