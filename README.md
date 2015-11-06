@@ -6,7 +6,7 @@ This application is a clone of the Hacker News site created on the second day of
 
 You will need the following things properly installed on your computer.
 
-* [Git]http://github.com/ahorrocks2/hacker_news_clone
+* [Git](http://github.com)
 * [Ruby on Rails](http://rubyonrails.org)
 
 ## Installation
